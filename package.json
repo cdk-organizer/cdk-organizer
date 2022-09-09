@@ -1,5 +1,5 @@
 {
-  "name": "@awslv/aws-cdk-project-framework",
+  "name": "@awslv/cdk-organizer-workspace",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {},
