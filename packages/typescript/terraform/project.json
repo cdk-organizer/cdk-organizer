@@ -10,7 +10,8 @@
         "outputPath": "dist/packages/typescript/terraform",
         "main": "packages/typescript/terraform/src/index.ts",
         "tsConfig": "packages/typescript/terraform/tsconfig.lib.json",
-        "assets": ["packages/typescript/terraform/*.md"]
+        "assets": ["packages/typescript/terraform/*.md"],
+        "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
     "publish": {

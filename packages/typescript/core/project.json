@@ -10,7 +10,8 @@
         "outputPath": "dist/packages/typescript/core",
         "main": "packages/typescript/core/src/index.ts",
         "tsConfig": "packages/typescript/core/tsconfig.lib.json",
-        "assets": ["packages/typescript/core/*.md"]
+        "assets": ["packages/typescript/core/*.md"],
+        "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
     "publish": {

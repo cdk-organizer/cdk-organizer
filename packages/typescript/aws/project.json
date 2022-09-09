@@ -10,7 +10,8 @@
         "outputPath": "dist/packages/typescript/aws",
         "main": "packages/typescript/aws/src/index.ts",
         "tsConfig": "packages/typescript/aws/tsconfig.lib.json",
-        "assets": ["packages/typescript/aws/*.md"]
+        "assets": ["packages/typescript/aws/*.md"],
+        "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
     "publish": {
