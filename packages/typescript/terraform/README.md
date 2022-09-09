@@ -11,7 +11,7 @@ Full documentation: <https://cdk-organizer.github.io/>
 ## Installation
 
 ```bash
-npm install --save @awslv/aws-cdk-organizer
+npm install --save @awslv/cdktf-organizer
 ```
 
 ## Project Structure
