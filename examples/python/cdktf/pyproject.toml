@@ -3,7 +3,7 @@ name = "cdk-organizer-tf-example"
 version = "1.0.0"
 description = "AWS CDK Organizer Python Example"
 authors = [ ]
-license = 'Proprietary'
+license = 'MIT'
 readme = 'README.md'
 
   [[tool.poetry.packages]]
