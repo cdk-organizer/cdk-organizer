@@ -1,0 +1,14 @@
+[flake8]
+exclude =
+	.git,
+	__pycache__,
+	build,
+	dist,
+	.tox,
+	venv,
+	.venv,
+  node_modules,
+	.pytest_cache
+  **/lambda_functions/rest_api/model.py
+  .serverless
+max-line-length = 150

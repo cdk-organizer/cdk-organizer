@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "cdk-organizer-tf-example"
+version = "1.0.0"
+description = "AWS CDK Organizer Python Example"
+authors = [ ]
+license = 'Proprietary'
+readme = 'README.md'
+
+  [[tool.poetry.packages]]
+  include = "templates"
+
+  [[tool.poetry.packages]]
+  include = "stacks"
+
+  [tool.poetry.dependencies]
+  python = ">=3.8,<3.10"
+  cdktf = "0.12.2"
+  cdktf-cdktf-provider-aws = "^9.0.23"
+
+  [tool.poetry.dependencies.cdk-organizer]
+  path = "../../../packages/python"
+  develop = true
+  extras = ["terraform"]
+
+[build-system]
+requires = ["poetry-core==1.1.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "examples/python/cdktf/templates",
+  "targets": {
+    "lock": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "poetry lock --no-update",
+        "cwd": "examples/python/cdktf"
+      }
+    },
+    "add": {
+      "executor": "@nxlv/python:add",
+      "options": {}
+    },
+    "update": {
+      "executor": "@nxlv/python:update",
+      "options": {}
+    },
+    "remove": {
+      "executor": "@nxlv/python:remove",
+      "options": {}
+    },
+    "build": {
+      "executor": "@nxlv/python:build",
+      "outputs": ["examples/python/cdktf/dist"],
+      "options": {
+        "outputPath": "examples/python/cdktf/dist",
+        "publish": false
+      }
+    },
+    "install": {
+      "executor": "@nxlv/python:install",
+      "options": {
+        "silent": false,
+        "args": "",
+        "cacheDir": ".cache/pypoetry",
+        "verbose": false,
+        "debug": false
+      }
+    },
+    "lint": {
+      "executor": "@nxlv/python:flake8",
+      "outputs": ["reports/examples/python/cdktf/pylint.txt"],
+      "options": {
+        "outputFile": "reports/examples/python/cdktf/pylint.txt"
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "source .venv/bin/activate && npx cdk deploy \"{args.stacks}\" -c env={args.env}"
+        ],
+        "cwd": "examples/python/cdktf",
+        "parallel": false
+      }
+    },
+    "synth": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "source .venv/bin/activate && npx cdk synth \"{args.stacks}\" -c env={args.env}"
+        ],
+        "cwd": "infra",
+        "parallel": false
+      }
+    }
+  },
+  "tags": []
+}

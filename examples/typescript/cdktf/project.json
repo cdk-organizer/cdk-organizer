@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "examples/typescript/cdktf/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/examples/typescript/cdktf",
+        "main": "examples/typescript/cdktf/src/index.ts",
+        "tsConfig": "examples/typescript/cdktf/tsconfig.lib.json",
+        "assets": ["examples/typescript/cdktf/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["examples/typescript/cdktf/**/*.ts"]
+      }
+    },
+    "synth": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx cdktf synth",
+        "cwd": "examples/typescript/cdktf"
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx cdktf deploy {args.stacks}",
+        "cwd": "examples/typescript/cdktf"
+      }
+    }
+  },
+  "tags": []
+}

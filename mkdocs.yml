@@ -1,0 +1,54 @@
+site_name: AWS CDK Organizer
+
+repo_url: https://github.com/lucasvieirasilva/cdk-organizer
+edit_uri: src/main/docs/
+
+theme:
+  name: 'material'
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Roboto
+  features:
+    - content.code.annotate
+    - announce.dismiss
+    - navigation.tracking
+    - navigation.sections
+    - navigation.instant
+    - navigation.indexes
+    - toc.follow
+
+plugins:
+  - include-markdown
+  - swagger-ui-tag
+  - search
+  - mkdocstrings:
+      enable_inventory: true
+      handlers:
+        python:
+          import:
+            - https://docs.python.org/3/objects.inv
+          options:
+            docstring_style: google
+            members_order: source
+  - autorefs
+  - gen-files:
+      scripts:
+        - ./docs/gen_doc_stubs.py
+  - literate-nav:
+      nav_file: summary.md
+
+watch:
+  - packages
+
+extra_css:
+  - css/github-permalink-style.css
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - toc:
+      permalink: ''

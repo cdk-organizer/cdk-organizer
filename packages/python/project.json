@@ -1,0 +1,68 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/python/cdk_organizer",
+  "targets": {
+    "lock": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "poetry lock --no-update",
+        "cwd": "packages/python"
+      }
+    },
+    "add": {
+      "executor": "@nxlv/python:add",
+      "options": {}
+    },
+    "update": {
+      "executor": "@nxlv/python:update",
+      "options": {}
+    },
+    "remove": {
+      "executor": "@nxlv/python:remove",
+      "options": {}
+    },
+    "build": {
+      "executor": "@nxlv/python:build",
+      "outputs": ["packages/python/dist"],
+      "options": {
+        "outputPath": "packages/python/dist",
+        "publish": false
+      }
+    },
+    "install": {
+      "executor": "@nxlv/python:install",
+      "options": {
+        "silent": false,
+        "args": "",
+        "cacheDir": ".cache/pypoetry",
+        "verbose": false,
+        "debug": false
+      }
+    },
+    "lint": {
+      "executor": "@nxlv/python:flake8",
+      "outputs": ["reports/packages/core/pylint.txt"],
+      "options": {
+        "outputFile": "reports/packages/core/pylint.txt"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["reports/packages/core/unittests", "coverage/packages/core"],
+      "options": {
+        "command": "poetry run pytest tests/",
+        "cwd": "packages/python"
+      }
+    },
+    "tox": {
+      "executor": "@nxlv/python:tox",
+      "outputs": ["reports/packages/core/unittests", "coverage/packages/core"],
+      "options": {
+        "silent": false,
+        "args": ""
+      }
+    }
+  },
+  "tags": ["docgen"]
+}

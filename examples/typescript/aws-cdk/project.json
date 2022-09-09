@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "examples/typescript/aws-cdk/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/examples/typescript/aws-cdk",
+        "main": "examples/typescript/aws-cdk/src/index.ts",
+        "tsConfig": "examples/typescript/aws-cdk/tsconfig.lib.json",
+        "assets": ["examples/typescript/aws-cdk/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["examples/typescript/aws-cdk/**/*.ts"]
+      }
+    },
+    "synth": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx cdk synth {args.stacks}",
+        "cwd": "examples/typescript/aws-cdk"
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx cdk deploy {args.stacks}",
+        "cwd": "examples/typescript/aws-cdk"
+      }
+    }
+  },
+  "tags": []
+}
