@@ -1,6 +1,6 @@
 site_name: AWS CDK Organizer
 
-repo_url: https://github.com/lucasvieirasilva/cdk-organizer
+repo_url: https://github.com/cdk-organizer/cdk-organizer
 edit_uri: src/main/docs/
 
 theme:
