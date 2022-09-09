@@ -7,10 +7,46 @@ This library contains the core features to handle CDK projects including:
 - Stack Groups Loader
 - Naming Utils
 
+Full documentation: <https://cdk-organizer.github.io/>
+
 ## Installation
 
 ```bash
 pip install cdk-organizer
+```
+
+### CDK Start Script
+
+The content of the `app.py` file should be as follows:
+
+#### AWS CDK
+
+```python
+import aws_cdk as cdk
+from cdk_organizer.miscellaneous.logging import setup_logging
+from cdk_organizer.stack_group import StackGroupLoader
+
+app = cdk.App()
+logger = setup_logging(__name__, app.node.try_get_context("loglevel") or "INFO")
+loader = StackGroupLoader(app)
+
+loader.synth()
+app.synth()
+```
+
+#### CDK for Terraform
+
+```python
+from cdk_organizer.miscellaneous.logging import setup_logging
+from cdk_organizer.stack_group import StackGroupLoader
+from cdktf import App
+
+app = App()
+logger = setup_logging(__name__, app.node.try_get_context("loglevel") or "INFO")
+loader = StackGroupLoader(app)
+
+loader.synth()
+app.synth()
 ```
 
 ## Project Structure

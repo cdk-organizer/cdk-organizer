@@ -6,6 +6,8 @@ This library contains the core features to handle CDK projects including:
 - Stack Groups Loader
 - Naming Utils
 
+Full documentation: <https://cdk-organizer.github.io/>
+
 ## Installation
 
 ```bash
@@ -20,6 +22,23 @@ To apply the pattern purposed in this library for CDK projects, the following st
 .
 +-- cdk.json
 +-- bin/main.ts
+```
+
+### CDK Start Script
+
+The content of the `bin/main.ts` file should be as follows:
+
+```typescript
+#!/usr/bin/env node
+import { App } from 'cdktf';
+import { StackGroupLoader } from '@awslv/cdk-organizer-core';
+
+const app = new App();
+const loader = new StackGroupLoader(app);
+
+loader.synth().then(() => {
+  app.synth();
+});
 ```
 
 ### Stack Structure
@@ -123,6 +142,8 @@ export class StorageStackGroup extends StackGroup<StorageStackGroupProps> {
 }
 ```
 
+> If you are using `typescript` version <4.3 you need to remove the `override` keyword.
+
 #### Using Stack Attributes from Other Stack Groups
 
 In some cases, you may want to use the attributes of another stack group. For example, refer the DNS Hosted Zone created by a shared stack group.
@@ -144,6 +165,8 @@ export class IamStackGroup extends StackGroup {
   }
 }
 ```
+
+> If you are using `typescript` version <4.3 you need to remove the `override` keyword.
 
 The function `getStackName` generates the stack name based on following pattern.
 

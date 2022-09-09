@@ -1,5 +1,10 @@
 {
   "name": "@awslv/cdk-organizer-core",
-  "version": "1.0.0",
-  "type": "commonjs"
+  "description": "CDK Organizer TypeScript Core Library",
+  "version": "1.1.0",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cdk-organizer/cdk-organizer.git"
+  }
 }
