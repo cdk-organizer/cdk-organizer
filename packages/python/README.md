@@ -12,8 +12,13 @@ Full documentation: <https://cdk-organizer.github.io/>
 ## Installation
 
 ```bash
-pip install cdk-organizer
+pip install cdk-organizer[terraform,aws]
 ```
+
+### Extras
+
+- `terraform`: Include `cdktf` as a dependency.
+- `aws`: Include `aws-cdk-lib` as a dependency.
 
 ### CDK Start Script
 
@@ -48,6 +53,37 @@ loader = StackGroupLoader(app)
 loader.synth()
 app.synth()
 ```
+
+## Context Variables
+
+The following context variables are required to the CDK Organizer to work properly:
+
+- `env`
+- `region`
+
+The variables can be set in the `cdk.json` file:
+
+```json
+{
+  ...
+  "context": {
+    ...
+    "env": "dev",
+    "region": "us-east-1"
+    ...
+  }
+  ...
+}
+```
+
+Or passed as arguments to the CDK CLI:
+
+```bash
+cdk synth --context env=dev --context region=us-east-1
+```
+
+> In the `cdktf` CLI the context variables cannot be passed as arguments, so they need to be set in the `cdk.json` file. <https://github.com/hashicorp/terraform-cdk/issues/2019>
+> The `env` variable can also be set as an environment variable `CDK_ENV`.
 
 ## Project Structure
 

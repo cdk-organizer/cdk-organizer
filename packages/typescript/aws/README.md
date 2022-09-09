@@ -39,6 +39,36 @@ const loader = new StackGroupLoader(app)
 loader.synth().then(() => console.log("Stack Groups Synthesized"));
 ```
 
+## Context Variables
+
+The following context variables are required to the CDK Organizer to work properly:
+
+- `env`
+- `region`
+
+The variables can be set in the `cdk.json` file:
+
+```json
+{
+  ...
+  "context": {
+    ...
+    "env": "dev",
+    "region": "us-east-1"
+    ...
+  }
+  ...
+}
+```
+
+Or passed as arguments to the CDK CLI:
+
+```bash
+cdk synth --context env=dev --context region=us-east-1
+```
+
+> The `env` variable can also be set as an environment variable `CDK_ENV`.
+
 ### Stack Structure
 
 the stack class needs to inherit from class `import { Stack } from '@awslv/aws-cdk-organizer'` for AWS CDK.

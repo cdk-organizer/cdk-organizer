@@ -41,6 +41,31 @@ loader.synth().then(() => {
 });
 ```
 
+## Context Variables
+
+The following context variables are required to the CDK Organizer to work properly:
+
+- `env`
+- `region`
+
+The variables can be set in the `cdk.json` file:
+
+```json
+{
+  ...
+  "context": {
+    ...
+    "env": "dev",
+    "region": "us-east-1"
+    ...
+  }
+  ...
+}
+```
+
+> In the `cdktf` CLI the context variables cannot be passed as arguments, so they need to be set in the `cdk.json` file. <https://github.com/hashicorp/terraform-cdk/issues/2019>
+> The `env` variable can also be set as an environment variable `CDK_ENV`.
+
 ### Stack Structure
 
 the stack class needs to inherit from class `import { Stack } from '@awslv/cdkft-organizer'` for Terraform CDK.
