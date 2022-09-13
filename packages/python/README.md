@@ -148,8 +148,8 @@ Add the following object to the environment configuration file:
 
 ```yaml
 s3_backend:
-  bucket: "<bucket-name>",
-  region: "<aws-region>",
+  bucket: "<bucket-name>"
+  region: "<aws-region>"
   dynamodb_table: "<dynamodb-table-name>"
 ```
 
