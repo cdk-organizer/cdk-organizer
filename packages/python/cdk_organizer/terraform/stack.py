@@ -38,7 +38,7 @@ class Stack(BaseStack, TerraformStack):
         BaseStack.__init__(self, id, stack_group)
         TerraformStack.__init__(self, scope, id, **kwargs)
 
-        backend_config = scope.node.try_get_context("s3Backend") or None
+        backend_config = stack_group.config.get('s3_backend', None)
         if backend_config:
             self.backend_base_args = backend_config
             S3Backend(

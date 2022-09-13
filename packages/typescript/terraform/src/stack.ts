@@ -20,9 +20,7 @@ export class Stack extends TerraformStack {
     this.getResourceName = this.base.getResourceName.bind(this.base);
     this.getBucketName = this.base.getBucketName.bind(this.base);
 
-    const backendConfig = scope.node.tryGetContext(
-      's3Backend'
-    ) as S3BackendProps;
+    const backendConfig = this.config['s3Backend'] as S3BackendProps | undefined;
     if (backendConfig) {
       new S3Backend(this, { ...backendConfig });
     }

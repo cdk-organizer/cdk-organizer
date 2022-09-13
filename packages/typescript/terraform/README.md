@@ -111,22 +111,13 @@ To use S3 terraform backend, the following resources are required:
 - S3 Bucket
 - DynamoDB Table
 
-Modify the `cdktf.json` to add the following object:
+Add the following object to the environment configuration file:
 
-```json
-{
-  ...
-  "context": {
-    ...
-    "s3Backend": {
-      "bucket": "<bucket-name>",
-      "region": "<aws-region>",
-      "dynamodbTable": "<dynamodb-table-name>"
-    }
-    ...
-  }
-  ...
-}
+```yaml
+s3Backend:
+  bucket: "<bucket-name>",
+  region: "<aws-region>",
+  dynamodbTable: "<dynamodb-table-name>"
 ```
 
 ### Stack Group Structure
