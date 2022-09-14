@@ -1,7 +1,7 @@
 site_name: AWS CDK Organizer
 
 repo_url: https://github.com/cdk-organizer/cdk-organizer
-edit_uri: src/main/docs/
+edit_uri: edit/main/docs/
 
 theme:
   name: 'material'
