@@ -225,4 +225,4 @@ Example:
 
 ### Examples
 
-- [AWS CDK](https://github.com/lucasvieirasilva/cdk-organizer/tree/main/examples/typescript/aws-cdk)
+- [AWS CDK](https://github.com/cdk-organizer/cdk-organizer/tree/main/examples/typescript/aws-cdk)

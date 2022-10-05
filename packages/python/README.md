@@ -309,5 +309,5 @@ Example:
 
 ### Examples
 
-- [AWS CDK](https://github.com/lucasvieirasilva/cdk-organizer/tree/main/examples/python/aws-cdk)
-- [CDK for Terraform](https://github.com/lucasvieirasilva/cdk-organizer/tree/main/examples/python/cdktf)
+- [AWS CDK](https://github.com/cdk-organizer/cdk-organizer/tree/main/examples/python/aws-cdk)
+- [CDK for Terraform](https://github.com/cdk-organizer/cdk-organizer/tree/main/examples/python/cdktf)

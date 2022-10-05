@@ -25,7 +25,7 @@ More details about the project folder structure can be found here:
 
 ## Examples
 
-- [Python AWS CDK](https://github.com/lucasvieirasilva/cdk-organizer/tree/main/examples/python/aws-cdk)
-- [Python CDK for Terraform](https://github.com/lucasvieirasilva/cdk-organizer/tree/main/examples/python/cdktf)
-- [Typescript AWS CDK](https://github.com/lucasvieirasilva/cdk-organizer/tree/main/examples/typescript/aws-cdk)
-- [Typescript CDK for Terraform](https://github.com/lucasvieirasilva/cdk-organizer/tree/main/examples/typescript/cdktf)
+- [Python AWS CDK](https://github.com/cdk-organizer/cdk-organizer/tree/main/examples/python/aws-cdk)
+- [Python CDK for Terraform](https://github.com/cdk-organizer/cdk-organizer/tree/main/examples/python/cdktf)
+- [Typescript AWS CDK](https://github.com/cdk-organizer/cdk-organizer/tree/main/examples/typescript/aws-cdk)
+- [Typescript CDK for Terraform](https://github.com/cdk-organizer/cdk-organizer/tree/main/examples/typescript/cdktf)

@@ -241,4 +241,4 @@ Example:
 
 ### Examples
 
-- [CDK for Terraform](https://github.com/lucasvieirasilva/cdk-organizer/tree/main/examples/typescript/cdktf)
+- [CDK for Terraform](https://github.com/cdk-organizer/cdk-organizer/tree/main/examples/typescript/cdktf)
