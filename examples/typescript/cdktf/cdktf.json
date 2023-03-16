@@ -6,9 +6,9 @@
   "terraformModules": [],
   "context": {
     "env": "dev",
-    "region": "eu-west-1",
+    "region": "us-east-1",
     "excludeStackIdFromLogicalIds": "true",
     "allowSepCharsInLogicalIds": "true"
   },
-  "projectId": "abea2ddc-5747-421a-a8be-60709e41609f"
+  "projectId": "c1c94cf1-926e-42d7-bc67-e539501d566f"
 }

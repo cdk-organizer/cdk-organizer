@@ -1,10 +1,11 @@
 {
+  "name": "examples-python-cdktf",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "examples/python/cdktf/templates",
   "targets": {
     "lock": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "poetry lock --no-update",
         "cwd": "examples/python/cdktf"
@@ -24,7 +25,7 @@
     },
     "build": {
       "executor": "@nxlv/python:build",
-      "outputs": ["examples/python/cdktf/dist"],
+      "outputs": ["{projectRoot}/dist"],
       "options": {
         "outputPath": "examples/python/cdktf/dist",
         "publish": false
@@ -42,13 +43,13 @@
     },
     "lint": {
       "executor": "@nxlv/python:flake8",
-      "outputs": ["reports/examples/python/cdktf/pylint.txt"],
+      "outputs": ["{workspaceRoot}/reports/examples/python/cdktf/pylint.txt"],
       "options": {
         "outputFile": "reports/examples/python/cdktf/pylint.txt"
       }
     },
     "deploy": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           "source .venv/bin/activate && npx cdk deploy \"{args.stacks}\" -c env={args.env}"
@@ -58,7 +59,7 @@
       }
     },
     "synth": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           "source .venv/bin/activate && npx cdk synth \"{args.stacks}\" -c env={args.env}"

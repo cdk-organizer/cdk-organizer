@@ -1,18 +1,16 @@
 """Mkdocs Code Reference Generator."""
 
 import json
-import os
 from pathlib import Path
 
 import mkdocs_gen_files
 
-with open("workspace.json", "r") as workspace_file:
-    workspace = json.loads(workspace_file.read())
-
 src_root = Path(".")
 
-for project_name, project_path in workspace["projects"].items():
-    with open(os.path.join(project_path, "project.json"), "r") as project_file:
+for path in src_root.glob("packages/**/project.json"):
+    project_path = str(path.parent)
+    print(project_path)
+    with open(path, "r") as project_file:
         project = json.loads(project_file.read())
         custom_patterns = [
             # Markdowns

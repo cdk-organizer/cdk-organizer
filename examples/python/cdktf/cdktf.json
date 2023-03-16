@@ -7,7 +7,7 @@
   "codeMakerOutput": "imports",
   "context": {
     "env": "dev",
-    "region": "eu-west-1",
+    "region": "us-east-1",
     "excludeStackIdFromLogicalIds": "true",
     "allowSepCharsInLogicalIds": "true"
   }

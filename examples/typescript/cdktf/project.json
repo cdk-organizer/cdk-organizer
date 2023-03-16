@@ -1,4 +1,5 @@
 {
+  "name": "cdktf",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "examples/typescript/cdktf/src",
   "projectType": "library",
@@ -21,14 +22,14 @@
       }
     },
     "synth": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "npx cdktf synth",
         "cwd": "examples/typescript/cdktf"
       }
     },
     "deploy": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "npx cdktf deploy {args.stacks}",
         "cwd": "examples/typescript/cdktf"

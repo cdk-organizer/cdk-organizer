@@ -2,13 +2,13 @@ import json
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from cdktf_cdktf_provider_aws import AwsProvider
-from cdktf_cdktf_provider_aws.iam import IamRole, IamRoleInlinePolicy
+from cdktf_cdktf_provider_aws.provider import AwsProvider
+from cdktf_cdktf_provider_aws.iam_role import IamRole, IamRoleInlinePolicy
 
 if TYPE_CHECKING:
     from constructs import Construct
     from cdk_organizer.terraform.stack_group import StackGroup
-    from cdktf_cdktf_provider_aws.s3 import S3Bucket
+    from cdktf_cdktf_provider_aws.s3_bucket import S3Bucket
 
 from cdk_organizer.terraform.stack import Stack
 

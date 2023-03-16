@@ -1,10 +1,11 @@
 {
+  "name": "examples-python-aws-cdk",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "examples/python/aws-cdk/templates",
   "targets": {
     "lock": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "poetry lock --no-update",
         "cwd": "examples/python/aws-cdk"
@@ -24,7 +25,7 @@
     },
     "build": {
       "executor": "@nxlv/python:build",
-      "outputs": ["examples/python/aws-cdk/dist"],
+      "outputs": ["{projectRoot}/dist"],
       "options": {
         "outputPath": "examples/python/aws-cdk/dist",
         "publish": false
@@ -42,13 +43,13 @@
     },
     "lint": {
       "executor": "@nxlv/python:flake8",
-      "outputs": ["reports/examples/python/aws-cdk/pylint.txt"],
+      "outputs": ["{workspaceRoot}/reports/examples/python/aws-cdk/pylint.txt"],
       "options": {
         "outputFile": "reports/examples/python/aws-cdk/pylint.txt"
       }
     },
     "deploy": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           "source .venv/bin/activate && npx cdk deploy \"{args.stacks}\" -c env={args.env}"
@@ -58,7 +59,7 @@
       }
     },
     "synth": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           "source .venv/bin/activate && npx cdk synth \"{args.stacks}\" -c env={args.env}"

@@ -1,4 +1,5 @@
 {
+  "name": "typescript-core",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/typescript/core/src",
   "projectType": "library",
@@ -15,7 +16,7 @@
       }
     },
     "publish": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "node tools/scripts/publish.mjs typescript-core {args.ver} {args.tag}"
       },
@@ -35,7 +36,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/typescript/core"],
+      "outputs": ["{workspaceRoot}/coverage/packages/typescript/core"],
       "options": {
         "jestConfig": "packages/typescript/core/jest.config.ts",
         "passWithNoTests": true

@@ -1,4 +1,5 @@
 {
+  "name": "typescript-terraform",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/typescript/terraform/src",
   "projectType": "library",
@@ -15,7 +16,7 @@
       }
     },
     "publish": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "node tools/scripts/publish.mjs typescript-terraform {args.ver} {args.tag}"
       },
@@ -35,7 +36,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/typescript/terraform"],
+      "outputs": ["{workspaceRoot}/coverage/packages/typescript/terraform"],
       "options": {
         "jestConfig": "packages/typescript/terraform/jest.config.ts",
         "passWithNoTests": true

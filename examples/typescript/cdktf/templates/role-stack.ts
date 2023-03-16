@@ -1,8 +1,8 @@
 import { Stack, StackGroup } from '@awslv/cdktf-organizer';
 import { Construct } from 'constructs';
-import { IamRole } from '@cdktf/provider-aws/lib/iam';
-import { S3Bucket } from '@cdktf/provider-aws/lib/s3';
-import { AwsProvider } from "@cdktf/provider-aws";
+import { IamRole } from '@cdktf/provider-aws/lib/iam-role';
+import { S3Bucket } from '@cdktf/provider-aws/lib/s3-bucket';
+import { AwsProvider } from '@cdktf/provider-aws/lib/provider';
 
 export type RoleStackProps = {
   bucket: S3Bucket;
@@ -20,7 +20,7 @@ export class RoleStack extends Stack {
 
     new AwsProvider(this, 'Aws', {
       region: this.config['region'] as string,
-    })
+    });
 
     new IamRole(this, 'Role', {
       assumeRolePolicy: JSON.stringify({
@@ -44,10 +44,7 @@ export class RoleStack extends Stack {
               {
                 Action: ['s3:GetBucket*', 's3:GetObject*', 's3:List*'],
                 Effect: 'Allow',
-                Resource: [
-                  props.bucket.arn,
-                  `${props.bucket.arn}/*`,
-                ],
+                Resource: [props.bucket.arn, `${props.bucket.arn}/*`],
               },
             ],
           }),

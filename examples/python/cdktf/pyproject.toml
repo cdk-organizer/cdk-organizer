@@ -14,8 +14,8 @@ readme = 'README.md'
 
   [tool.poetry.dependencies]
   python = ">=3.8,<3.10"
-  cdktf = "0.12.2"
-  cdktf-cdktf-provider-aws = "^9.0.23"
+  cdktf = "0.15.5"
+  cdktf-cdktf-provider-aws = "^12.0.9"
 
   [tool.poetry.dependencies.cdk-organizer]
   path = "../../../packages/python"

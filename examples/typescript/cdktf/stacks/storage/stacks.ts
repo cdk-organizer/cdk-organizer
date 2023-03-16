@@ -1,6 +1,6 @@
 import { StackGroup } from '@awslv/cdktf-organizer';
 import { BaseConfig } from '@awslv/cdk-organizer-core';
-import { S3Bucket } from '@cdktf/provider-aws/lib/s3';
+import { S3Bucket } from '@cdktf/provider-aws/lib/s3-bucket';
 import { S3Stack } from '../../templates/s3-stack';
 
 type StorageStackGroupProps = {
