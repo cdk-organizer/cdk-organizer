@@ -1,4 +1,5 @@
 {
+  "name": "examples-typescript-aws-cdk",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "examples/typescript/aws-cdk/src",
   "projectType": "library",
@@ -21,14 +22,14 @@
       }
     },
     "synth": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "npx cdk synth {args.stacks}",
         "cwd": "examples/typescript/aws-cdk"
       }
     },
     "deploy": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "npx cdk deploy {args.stacks}",
         "cwd": "examples/typescript/aws-cdk"

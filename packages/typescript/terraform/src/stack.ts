@@ -1,5 +1,5 @@
 import { BaseStack, StackGroup } from '@awslv/cdk-organizer-core';
-import { TerraformStack, S3Backend, S3BackendProps } from 'cdktf';
+import { TerraformStack, S3Backend, S3BackendConfig } from 'cdktf';
 import { Construct } from 'constructs';
 
 export class Stack extends TerraformStack {
@@ -20,7 +20,9 @@ export class Stack extends TerraformStack {
     this.getResourceName = this.base.getResourceName.bind(this.base);
     this.getBucketName = this.base.getBucketName.bind(this.base);
 
-    const backendConfig = this.config['s3Backend'] as S3BackendProps | undefined;
+    const backendConfig = this.config['s3Backend'] as
+      | S3BackendConfig
+      | undefined;
     if (backendConfig) {
       new S3Backend(this, { ...backendConfig });
     }

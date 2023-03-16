@@ -3,8 +3,8 @@
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from cdktf_cdktf_provider_aws import AwsProvider
-from cdktf_cdktf_provider_aws.s3 import S3Bucket
+from cdktf_cdktf_provider_aws.provider import AwsProvider
+from cdktf_cdktf_provider_aws.s3_bucket import S3Bucket
 
 if TYPE_CHECKING:
     from constructs import Construct

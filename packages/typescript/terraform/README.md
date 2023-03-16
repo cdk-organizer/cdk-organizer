@@ -74,8 +74,8 @@ the stack class needs to inherit from class `import { Stack } from '@awslv/cdkft
 
 ```typescript
 import { Stack, StackGroup } from '@awslv/cdktf-organizer';
-import { AwsProvider } from '@cdktf/provider-aws';
-import { S3Bucket } from '@cdktf/provider-aws/lib/s3';
+import { AwsProvider } from '@cdktf/provider-aws/provider';
+import { S3Bucket } from '@cdktf/provider-aws/lib/s3-bucket';
 import { Construct } from 'constructs';
 
 export type S3StackProps = {
@@ -95,10 +95,10 @@ export class S3Stack extends Stack {
 
     new AwsProvider(this, 'Aws', {
       region: this.config['region'] as string,
-    })
+    });
 
     this.bucket = new S3Bucket(this, 'Bucket', {
-      bucket: this.getBucketName(props.bucketName)
+      bucket: this.getBucketName(props.bucketName),
     });
   }
 }
@@ -115,9 +115,9 @@ Add the following object to the environment configuration file:
 
 ```yaml
 s3Backend:
-  bucket: "<bucket-name>"
-  region: "<aws-region>"
-  dynamodbTable: "<dynamodb-table-name>"
+  bucket: '<bucket-name>'
+  region: '<aws-region>'
+  dynamodbTable: '<dynamodb-table-name>'
 ```
 
 ### Stack Group Structure
@@ -140,7 +140,7 @@ The stack groups files follow this pattern:
 ```typescript
 import { StackGroup } from '@awslv/cdktf-organizer';
 import { BaseConfig } from '@awslv/cdk-organizer-core';
-import { S3Bucket } from '@cdktf/provider-aws/lib/s3';
+import { S3Bucket } from '@cdktf/provider-aws/lib/s3-bucket';
 import { S3Stack } from '../../templates/s3-stack';
 
 type StorageStackGroupProps = {
