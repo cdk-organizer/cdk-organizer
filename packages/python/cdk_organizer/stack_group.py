@@ -348,7 +348,17 @@ class StackGroup(
         Returns:
             The normalized module name.
         """
-        return self.module_name.replace("stacks.", "").replace(".", separator).replace("_", '-').lower()
+        parts = self.module_name.split('.')
+
+        ignore_stacks_prefix = self.app.node.try_get_context('ignoreStacksPrefix') or False
+        if not ignore_stacks_prefix:
+            parts[0] = parts[0].replace('stacks', '')
+            if (parts[0].endswith('_')):
+                parts[0] = parts[0][:-1]
+        else:
+            parts.pop(0)
+
+        return separator.join(parts).lower().replace('_', '-')
 
     @abc.abstractmethod
     def _load_stacks(self) -> None:
