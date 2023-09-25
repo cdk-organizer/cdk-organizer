@@ -7,6 +7,17 @@ from typing import IO, Any
 import yaml
 
 
+def custom_compose_document(self):
+    """Override the default compose_document method, and removes the `self.anchors = {}` line."""
+    self.get_event()
+    node = self.compose_node(None, None)
+    self.get_event()
+    return node
+
+
+yaml.SafeLoader.compose_document = custom_compose_document
+
+
 def yaml_path_loader(path: str) -> yaml.SafeLoader:
     """
     YAML Path Loader.
@@ -42,7 +53,10 @@ def yaml_path_loader(path: str) -> yaml.SafeLoader:
 
         with open(filename, 'r') as f:
             if extension in ('yaml', 'yml'):
-                return yaml.load(f, Loader)
+                included_loader = yaml.SafeLoader(f.read())
+                included_loader.anchors = loader.anchors
+
+                return included_loader.get_data()
             elif extension in ('json', ):
                 return json.load(f)
             else:
