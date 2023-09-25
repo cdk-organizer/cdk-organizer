@@ -53,7 +53,7 @@ def yaml_path_loader(path: str) -> yaml.SafeLoader:
 
         with open(filename, 'r') as f:
             if extension in ('yaml', 'yml'):
-                included_loader = yaml.SafeLoader(f.read())
+                included_loader = yaml_path_loader(filename)(f.read())
                 included_loader.anchors = loader.anchors
 
                 return included_loader.get_data()
