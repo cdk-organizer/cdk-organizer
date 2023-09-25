@@ -41,7 +41,7 @@ def construct_merge(loader: yaml.SafeLoader, node: yaml.Node) -> List[Any]:
         raise yaml.constructor.ConstructorError(
             None, None, f'expected a sequence node, but found {node.id}', node.start_mark)
 
-    values = loader.construct_sequence(node)
+    values = loader.construct_sequence(node, True)
 
     result = []
     for value in values:
