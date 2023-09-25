@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2023-09-25
+
+### Changed
+
+- Changed `!include` YAML tag to support Jinja2 templating.
+
+`a.yaml`
+
+```yaml
+b: !include
+  path: b.yaml
+  params:
+    key: value
+```
+
+`b.yaml`
+
+```yaml
+key: {{ key }}
+```
+
+`a.yaml` will be rendered as:
+
+```yaml
+b:
+  key: value
+```
+
 ## [1.8.2] - 2023-09-25
 
 ### Fixed

@@ -5,6 +5,7 @@ import os
 from typing import IO, Any
 
 import yaml
+from jinja2 import BaseLoader, Environment, StrictUndefined, UndefinedError
 
 
 def custom_compose_document(self):
@@ -36,6 +37,32 @@ def yaml_path_loader(path: str) -> yaml.SafeLoader:
     key: value
     ```
 
+    There also can be a `params` key in the `!include` tag:
+
+    ```yaml
+    b: !include
+      path: b.yaml
+      params:
+        key: value
+    ```
+
+    `b.yaml`
+    ```yaml
+    key: {{ key }}
+    ```
+
+    The variable `key` will be resolved to `value`, and the output will be:
+
+    ```json
+    {
+        "b": {
+            "key": "value"
+        }
+    }
+    ```
+
+    **NOTE**: The variables are resolved using Jinja2.
+
     Args:
         path (str): YAML file path
 
@@ -48,12 +75,24 @@ def yaml_path_loader(path: str) -> yaml.SafeLoader:
             super().__init__(stream)
 
     def construct_include(loader: Loader, node: yaml.Node) -> Any:
-        filename = os.path.abspath(os.path.join(loader._root, loader.construct_scalar(node)))
+        params = {}
+        path = None
+        if isinstance(node.value, str):
+            path = loader.construct_scalar(node)
+        else:
+            value = loader.construct_mapping(node, True)
+            if 'path' not in value:
+                raise yaml.constructor.ConstructorError(None, None, f'expected a path, but found {value}', node.start_mark)
+
+            path = value['path']
+            params = value.get('params', {})
+
+        filename = os.path.abspath(os.path.join(loader._root, path))
         extension = os.path.splitext(filename)[1].lstrip('.')
 
         with open(filename, 'r') as f:
             if extension in ('yaml', 'yml'):
-                included_loader = yaml_path_loader(filename)(f.read())
+                included_loader = yaml_path_loader(filename)(resolve_variables(f.read(), params))
                 included_loader.anchors = loader.anchors
 
                 return included_loader.get_data()
@@ -64,3 +103,25 @@ def yaml_path_loader(path: str) -> yaml.SafeLoader:
 
     yaml.add_constructor('!include', construct_include, Loader)
     return Loader
+
+
+def resolve_variables(value: str, variables: dict) -> str:
+    """
+    Resolve Variables using Jinja2.
+
+    Args:
+        value (str): Value to be resolved
+        variables (dict): Variables
+
+    Returns:
+        str: Resolved value
+    """
+    try:
+        value_template = Environment(
+            loader=BaseLoader,
+            undefined=StrictUndefined,
+            autoescape=True
+        ).from_string(value)
+        return value_template.render(variables)
+    except UndefinedError as error:
+        raise yaml.constructor.ConstructorError(None, None, f'undefined variable: {error}', None)
