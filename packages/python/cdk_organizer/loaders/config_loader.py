@@ -46,6 +46,7 @@ from pathlib import Path
 from typing import Tuple, TypeVar
 
 import yaml
+from cdk_organizer.miscellaneous.yaml_tags.include_yaml import yaml_path_loader
 from constructs import IConstruct
 
 CDK_APP_TYPE = TypeVar('CDK_APP_TYPE', bound=IConstruct)
@@ -103,7 +104,7 @@ class ConfigLoader(object):
             for filename in os.listdir(path):
                 if fnmatch(filename, "*.yaml"):
                     with open(os.path.join(path, filename), 'r') as file:
-                        file_data = yaml.safe_load(file.read())
+                        file_data = yaml.load(file.read(), yaml_path_loader(os.path.join(path, filename)))
 
                     config = self.merge_dict(file_data or {}, config)
 
