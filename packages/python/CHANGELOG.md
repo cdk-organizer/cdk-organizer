@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.0] - 2023-09-28
+
+### Added
+
+- Added `!include_pattern` YAML tag to support including multiple YAML files using glob patterns.
+
+`a.yaml`
+
+```yaml
+b: !include_pattern '*.yaml'
+```
+
+`b.yaml`
+
+```yaml
+key: value
+```
+
+`a.yaml` will be rendered as:
+
+```yaml
+b:
+  - key: value
+```
+
+The `!include_pattern` also supports `params` to pass to the included YAML files.
+
+```yaml
+b: !include_pattern
+  pattern: '*.yaml'
+  params:
+    KEY: VALUE
+```
+
 ## [1.9.0] - 2023-09-25
 
 ### Changed
