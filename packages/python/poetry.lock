@@ -100,22 +100,21 @@ files = [
 [package.dependencies]
 attrs = ">=20"
 exceptiongroup = {version = "*", markers = "python_version < \"3.11\""}
-typing_extensions = {version = "*", markers = "python_version < \"3.8\""}
 
 [[package]]
 name = "cdktf"
-version = "0.17.3"
+version = "0.20.0"
 description = "Cloud Development Kit for Terraform"
 optional = true
-python-versions = "~=3.7"
+python-versions = "~=3.8"
 files = [
-    {file = "cdktf-0.17.3-py3-none-any.whl", hash = "sha256:a07ba03d47f4f575f0bedcfab757c01eb04362fc85362ae7f4504ce7c93b7564"},
-    {file = "cdktf-0.17.3.tar.gz", hash = "sha256:357a372319bb0151a6d8ace305b9e8df5aeb75348401484ce3a3702409d8beb5"},
+    {file = "cdktf-0.20.0-py3-none-any.whl", hash = "sha256:00db0c5c72ed5d8caea3f5d1b26ac7cee154bc94f2a6fae481ca1c1d059aff53"},
+    {file = "cdktf-0.20.0.tar.gz", hash = "sha256:63e0071c317b0e39979b8141a63abd9b4ba237f649c72e83fec58865c836d499"},
 ]
 
 [package.dependencies]
 constructs = ">=10.0.25,<11.0.0"
-jsii = ">=1.79.0,<2.0.0"
+jsii = ">=1.93.0,<2.0.0"
 publication = ">=0.0.3"
 typeguard = ">=2.13.3,<2.14.0"
 
@@ -200,23 +199,23 @@ i18n = ["Babel (>=2.7)"]
 
 [[package]]
 name = "jsii"
-version = "1.86.0"
+version = "1.94.0"
 description = "Python client for jsii runtime"
 optional = false
-python-versions = "~=3.7"
+python-versions = "~=3.8"
 files = [
-    {file = "jsii-1.86.0-py3-none-any.whl", hash = "sha256:5ffcae1d64aaacff2dad45692f48cb474005ebb10f2070e9ebfff1b6f6bbacab"},
-    {file = "jsii-1.86.0.tar.gz", hash = "sha256:1b841074dc20ef0514499101a41b9c9f3d33b5d24109964b5bdccfcd32a8e547"},
+    {file = "jsii-1.94.0-py3-none-any.whl", hash = "sha256:1105bae271ae47c27cf31c1565c5157306efed5ad9323c9a27336f962f465716"},
+    {file = "jsii-1.94.0.tar.gz", hash = "sha256:175abc356603d98f18ab6f6aa74bfeae253e4e56340aef9dc40bbb1a6a59868b"},
 ]
 
 [package.dependencies]
 attrs = ">=21.2,<24.0"
-cattrs = ">=1.8,<23.2"
+cattrs = ">=1.8,<23.3"
 importlib-resources = ">=5.2.0"
 publication = ">=0.0.3"
 python-dateutil = "*"
 typeguard = ">=2.13.3,<2.14.0"
-typing-extensions = ">=3.7,<5.0"
+typing-extensions = ">=3.8,<5.0"
 
 [[package]]
 name = "markupsafe"
@@ -430,5 +429,5 @@ terraform = ["cdktf"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.7,<3.11"
-content-hash = "45a800c563d8db705588c642c08112331e5f057f10f10a9c60fe1ea2a594c6fe"
+python-versions = ">=3.8,<3.11"
+content-hash = "1cb396b1ea849001cfb87e7f2ea474842e46f2f2047f7c93cd84e8815222909d"
